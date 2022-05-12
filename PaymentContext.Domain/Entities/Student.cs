@@ -5,7 +5,7 @@ namespace PaymentContext.Domain.Entities;
 
 public class Student : Entity
 {
-    private IList<Subscription> _subscription;
+    private IList<Subscription> _subscriptions;
     
     public Student(
         Name name,
@@ -15,7 +15,7 @@ public class Student : Entity
         Name = name;
         Document = document;
         Email = email;
-        _subscription = new List<Subscription>();
+        _subscriptions = new List<Subscription>();
 
         AddNotifications(name, document, email);
     }
@@ -28,5 +28,19 @@ public class Student : Entity
 
     public Address Address { get; }
 
-    public IReadOnlyCollection<Subscription> Subscription { get; }
+    public IReadOnlyCollection<Subscription> Subscriptions { get; }
+
+    public void AddSubscription(Subscription subscription)
+    {
+        bool hasSubscription = false;
+
+        foreach (var sub in _subscriptions)
+        {
+            if(sub.Active)
+                hasSubscription = true;
+        }
+
+        if(hasSubscription)
+            AddNotification("Student.Subscriptions", "You already have an active subscription.");
+    }
 }
