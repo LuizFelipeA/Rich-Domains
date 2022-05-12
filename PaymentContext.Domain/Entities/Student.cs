@@ -1,28 +1,26 @@
+using PaymentContext.Domain.ValueObjects;
+
 namespace PaymentContext.Domain.Entities;
 
 public class Student
 {
     public Student(
-        string firstName,
-        string lastName,
-        string document,
-        string email)
+        Name name,
+        Document document,
+        Email email)
     {
-        FirstName = firstName;
-        LastName = lastName;
+        Name = name;
         Document = document;
         Email = email;
     }
 
-    public string FirstName { get; }
+    public Name Name { get; set; }
 
-     public string LastName { get; }
+    public Document Document { get; }
 
-     public string Document { get; }
+    public Email Email { get; }
 
-     public string Email { get; }
+    public string Address { get; }
 
-     public string Address { get; }
-
-     public IReadOnlyCollection<Subscription> Subscription { get; }
+    public IReadOnlyCollection<Subscription> Subscription { get; }
 }
