@@ -1,9 +1,12 @@
 using PaymentContext.Domain.ValueObjects;
+using PaymentContext.Shared.Entities;
 
 namespace PaymentContext.Domain.Entities;
 
-public class Student
+public class Student : Entity
 {
+    private IList<Subscription> _subscription;
+    
     public Student(
         Name name,
         Document document,
@@ -12,6 +15,7 @@ public class Student
         Name = name;
         Document = document;
         Email = email;
+        _subscription = new List<Subscription>();
     }
 
     public Name Name { get; set; }
@@ -20,7 +24,7 @@ public class Student
 
     public Email Email { get; }
 
-    public string Address { get; }
+    public Address Address { get; }
 
     public IReadOnlyCollection<Subscription> Subscription { get; }
 }

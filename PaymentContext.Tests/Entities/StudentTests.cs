@@ -9,11 +9,11 @@ public class StudentTests
     [TestMethod]
     public void TestMethod1()
     {
-        var student = new Student(
-            firstName: "LP",
-            lastName: "god",
-            document: "000.000.000-00",
-            email: "lp@lp.com");
+        // var student = new Student(
+        //     firstName: "LP",
+        //     lastName: "god",
+        //     document: "000.000.000-00",
+        //     email: "lp@lp.com");
 
         // student.FirstName = "";
     }

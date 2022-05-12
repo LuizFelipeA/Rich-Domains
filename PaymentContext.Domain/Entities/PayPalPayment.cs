@@ -13,7 +13,7 @@ public class PayPalPayment : Payment
         decimal totalPaid,
         string payer,
         Document document,
-        string address,
+        Address address,
         Email email)
         : base(
             number,

@@ -1,6 +1,8 @@
+using PaymentContext.Shared.ValueObjects;
+
 namespace PaymentContext.Domain.ValueObjects;
 
-public class Name
+public class Name : ValueObject
 {
     public Name(string firstName, string lastName)
     {
@@ -8,7 +10,7 @@ public class Name
         LastName = lastName;
     }
 
-    public string FirstName { get; set; }
+    public string FirstName { get; }
 
-    public string LastName { get; set; }
+    public string LastName { get; }
 }
