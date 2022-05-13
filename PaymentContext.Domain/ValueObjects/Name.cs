@@ -22,4 +22,9 @@ public class Name : ValueObject
     public string FirstName { get; }
 
     public string LastName { get; }
+
+    public override string ToString()
+    {
+        return $"{FirstName} {LastName}";
+    }
 }

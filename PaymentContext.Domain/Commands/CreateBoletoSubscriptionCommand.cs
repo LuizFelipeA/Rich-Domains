@@ -58,7 +58,5 @@ namespace PaymentContext.Domain.Commands
         public string Country { get; set; }
 
         public string ZipCode { get; set; }
-
-        
     }
 }
