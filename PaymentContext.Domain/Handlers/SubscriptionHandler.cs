@@ -30,6 +30,9 @@ public class SubscriptionHandler :
         // Building objects and Relationships
         var student = BuildStudentEntity(command);
         
+        if(!IsValid)
+            return new CommandResult(false, "Something went wrong.");
+
         // Save information
         _repository.CreateSubscription(student);
 
