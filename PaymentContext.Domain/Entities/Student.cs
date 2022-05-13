@@ -1,3 +1,4 @@
+using Flunt.Validations;
 using PaymentContext.Domain.ValueObjects;
 using PaymentContext.Shared.Entities;
 
@@ -28,7 +29,7 @@ public class Student : Entity
 
     public Address Address { get; }
 
-    public IReadOnlyCollection<Subscription> Subscriptions { get; }
+    public IReadOnlyCollection<Subscription> Subscriptions { get{ return _subscriptions.ToList(); } }
 
     public void AddSubscription(Subscription subscription)
     {
@@ -40,7 +41,14 @@ public class Student : Entity
                 hasSubscription = true;
         }
 
-        if(hasSubscription)
-            AddNotification("Student.Subscriptions", "You already have an active subscription.");
+        AddNotifications(new Contract<Student>()
+            .Requires()
+            .IsFalse(hasSubscription, "Student.Subscriptions", "You already have an active subscription.")
+            .AreNotEquals(0, subscription.Payments.Count, "Student.Subscriptions.Payments", "Subscription does not have payments."));
+
+        // if(hasSubscription)
+        //     AddNotification("Student.Subscriptions", "You already have an active subscription.");
+
+        _subscriptions.Add(subscription);
     }
 }

@@ -25,7 +25,7 @@ public class Subscription : Entity
 
     public bool Active { get; private set; }
 
-    public List<Payment> Payments { get; }
+    public List<Payment> Payments { get{ return _payments.ToList(); } }
 
     public void AddPayment(Payment payment)
     {
